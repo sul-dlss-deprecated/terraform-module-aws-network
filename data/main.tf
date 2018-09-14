@@ -64,7 +64,6 @@ locals {
                       "${data.aws_subnet.public1.id}",
                       "${data.aws_subnet.public2.id}",
                       "${data.aws_subnet.public3.id}",
-                      "fred",
                      ]
   private_subnets  = [
                       "${data.aws_subnet.private1.id}",
