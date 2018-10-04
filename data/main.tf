@@ -58,21 +58,40 @@ data "aws_subnet" "db3" {
   cidr_block = "10.0.130.0/24"
 }
 
+data "aws_subnet" "elasticache1" {
+  vpc_id     = "${data.aws_vpc.selected.id}"
+  cidr_block = "10.0.192.0/24"
+}
+
+data "aws_subnet" "elasticache2" {
+  vpc_id     = "${data.aws_vpc.selected.id}"
+  cidr_block = "10.0.193.0/24"
+}
+
+data "aws_subnet" "elasticache3" {
+  vpc_id     = "${data.aws_vpc.selected.id}"
+  cidr_block = "10.0.194.0/24"
+}
 
 locals {
-  public_subnets   = [
-                      "${data.aws_subnet.public1.id}",
-                      "${data.aws_subnet.public2.id}",
-                      "${data.aws_subnet.public3.id}",
-                     ]
-  private_subnets  = [
-                      "${data.aws_subnet.private1.id}",
-                      "${data.aws_subnet.private2.id}",
-                      "${data.aws_subnet.private3.id}",
-                     ]
-  database_subnets = [
-                      "${data.aws_subnet.db1.id}",
-                      "${data.aws_subnet.db2.id}",
-                      "${data.aws_subnet.db3.id}",
-                     ]
+  public_subnets     = [
+                        "${data.aws_subnet.public1.id}",
+                        "${data.aws_subnet.public2.id}",
+                        "${data.aws_subnet.public3.id}",
+                       ]
+  private_subnets    = [
+                        "${data.aws_subnet.private1.id}",
+                        "${data.aws_subnet.private2.id}",
+                        "${data.aws_subnet.private3.id}",
+                        ]
+  database_subnets   = [
+                        "${data.aws_subnet.db1.id}",
+                        "${data.aws_subnet.db2.id}",
+                        "${data.aws_subnet.db3.id}",
+                       ]
+ elasticache_subnets = [
+                        "${data.aws_subnet.elasticache1.id}",
+                        "${data.aws_subnet.elasticache2.id}",
+                        "${data.aws_subnet.elasticache3.id}",
+                       ]
 }
