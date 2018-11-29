@@ -1,3 +1,7 @@
+# v3
+
+* Removed unused variables from `//data`.
+
 # v2
 
 * Added in a data sub-module that takes the same arguments, but only returns an
