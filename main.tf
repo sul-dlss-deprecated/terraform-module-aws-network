@@ -53,8 +53,6 @@ resource "aws_vpc_endpoint_route_table_association" "private_s3" {
 
   vpc_endpoint_id = "${aws_vpc_endpoint.s3.id}"
   route_table_id  = "${element(module.vpc.private_route_table_ids, count.index)}"
-
-  depends_on = ["module.vpc", "aws_vpc_endpoint.s3"]
 }
 
 # dynamodb
@@ -76,7 +74,6 @@ resource "aws_vpc_endpoint_route_table_association" "private_dynamodb" {
 
   vpc_endpoint_id = "${aws_vpc_endpoint.dynamodb.id}"
   route_table_id  = "${element(module.vpc.private_route_table_ids, count.index)}"
-  depends_on = ["module.vpc", "aws_vpc_endpoint.dynamodb"]
 }
 
 # create a kinesis endpoint service for the private subnets
