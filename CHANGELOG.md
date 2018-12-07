@@ -1,3 +1,8 @@
+# v6
+
+* Deprecated `//data` outputs that joined strings w/ commas, e.g. `public_subnets`
+* Provided proper list outputs as replacements, e.g. `public_subnet_ids`.  
+
 # v5
 
 * Removed unused variables from `//data`.
