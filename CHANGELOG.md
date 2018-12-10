@@ -1,3 +1,7 @@
+# v3
+
+* Remove unneeded depends_on statements.
+
 # v2
 
 * Added in a data sub-module that takes the same arguments, but only returns an
