@@ -8,18 +8,16 @@ changes to multiple places that are including data from the module.  Doing as a
 bare data source means having to potentially update a number of variables for
 subnets when you move over.
 
-This should be kept in sync with any changes to the parent directory's inputs
-and outputs.
+This **must** be kept in sync with any changes to the parent directory's inputs and outputs.
 
 # Variables
 
-See variables.tf for all current variables and descriptions.
+See `variables.tf` for all current variables and descriptions.
 
 # Resources
 
-This only uses local variables and data sources needed to mimic the parent
-directory.
+This only uses local variables and data sources needed to mimic the parent directory.
 
 # Outputs
 
-See output.tf for all current outputs.
+See `output.tf` for all current outputs.
