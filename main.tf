@@ -118,3 +118,95 @@ resource "aws_security_group" "interface_endpoint" {
     Environment   = "${var.environment}"
   }
 }
+
+// Save output variables to SSM Parameters for use outside of the module
+resource "aws_ssm_parameter" "vpc_id" {
+  name        = "vpc_id"
+  type        = "String"
+  value       = "${module.vpc.vpc_id}"
+  description = "The ID for this organizations VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
+
+resource "aws_ssm_parameter" "public_subnets" {
+  name        = "public_subnets"
+  type        = "StringList"
+  value       = "${module.vpc.public_subnets}"
+  description = "List of the public subnets in the VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
+
+resource "aws_ssm_parameter" "private_subnets" {
+  name        = "private_subnets"
+  type        = "StringList"
+  value       = "${module.vpc.private_subnets}"
+  description = "List of the private subnets in the VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
+
+resource "aws_ssm_parameter" "database_subnets" {
+  name        = "database_subnets"
+  type        = "StringList"
+  value       = "${module.vpc.database_subnets}"
+  description = "List of the database subnets in the VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
+
+resource "aws_ssm_parameter" "elasticache_subnets" {
+  name        = "elasticache_subnets"
+  type        = "StringList"
+  value       = "${local.elasticache_subnets}"
+  description = "List of the elasticache subnets in the VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
+
+resource "aws_ssm_parameter" "database_subnet_group" {
+  name        = "database_subnet_group"
+  type        = "String"
+  value       = "${module.vpc.database_subnet_group}"
+  description = "The database subnet group for the VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
+
+resource "aws_ssm_parameter" "elasticache_subnet_group" {
+  name        = "elasticache_subnet_group"
+  type        = "String"
+  value       = "${module.vpc.elasticache_subnet_group}"
+  description = "The elasticache subnet group for the VPC"
+  overwrite   = true
+
+  tags {
+    "Environment" = "${var.environment}"
+    "Terraform"   = "true"
+  }
+}
