@@ -136,7 +136,7 @@ resource "aws_ssm_parameter" "vpc_id" {
 resource "aws_ssm_parameter" "public_subnets" {
   name        = "public_subnets"
   type        = "StringList"
-  value       = "${module.vpc.public_subnets}"
+  value       = "${join(",", module.vpc.public_subnets)}"
   description = "List of the public subnets in the VPC"
   overwrite   = true
 
@@ -149,7 +149,7 @@ resource "aws_ssm_parameter" "public_subnets" {
 resource "aws_ssm_parameter" "private_subnets" {
   name        = "private_subnets"
   type        = "StringList"
-  value       = "${module.vpc.private_subnets}"
+  value       = "${join(",", module.vpc.private_subnets)}"
   description = "List of the private subnets in the VPC"
   overwrite   = true
 
@@ -162,7 +162,7 @@ resource "aws_ssm_parameter" "private_subnets" {
 resource "aws_ssm_parameter" "database_subnets" {
   name        = "database_subnets"
   type        = "StringList"
-  value       = "${module.vpc.database_subnets}"
+  value       = "${join(",", module.vpc.database_subnets)}"
   description = "List of the database subnets in the VPC"
   overwrite   = true
 
@@ -175,7 +175,7 @@ resource "aws_ssm_parameter" "database_subnets" {
 resource "aws_ssm_parameter" "elasticache_subnets" {
   name        = "elasticache_subnets"
   type        = "StringList"
-  value       = "${local.elasticache_subnets}"
+  value       = "${join(",", local.elasticache_subnets)}"
   description = "List of the elasticache subnets in the VPC"
   overwrite   = true
 
